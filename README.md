@@ -81,8 +81,8 @@ This project is a starting point for a Flutter application.
 
 
  ```  
-  
-### IOS ios/Runner/Info.plist  
+
+### IOS ios/Runner/Info.plist
 
 ```  
     <!-- Another Brother Section -->

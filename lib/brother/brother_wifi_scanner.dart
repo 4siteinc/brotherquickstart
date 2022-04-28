@@ -3,7 +3,6 @@ import 'package:brotherquickstart/util/navigation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
-import 'package:another_brother/printer_info.dart';
 import 'dart:async';
 
 class BrotherWifiScanner extends StatefulWidget {
@@ -147,7 +146,6 @@ class _BrotherWifiScannerState extends State<BrotherWifiScanner> {
     });
 
     _connectors = await AirBrother.getNetworkDevices(5000);
-    final Printer _printer = Printer();
     setState(() {
       _connectors;
       isLoading = false;

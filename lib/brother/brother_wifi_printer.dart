@@ -1,12 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
-import "dart:ui" as ui;
 
 import 'package:another_brother/printer_info.dart';
 import 'package:brotherquickstart/util/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 class BrotherWifiPrinter extends StatefulWidget {
@@ -122,7 +119,7 @@ class BrotherWifiPrinter extends StatefulWidget {
     }
     debugPrint("BrotherWifiPrinter: static void print ERROR");
   }
-}/**/
+}
 
 class _BrotherWifiPrinterState extends State<BrotherWifiPrinter> {
   List<NetPrinter> _netPrinterList = List.empty(growable: true);
