@@ -1,5 +1,10 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
+import "dart:ui" as ui;
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 
 class ImageUtil {
@@ -20,4 +25,13 @@ class ImageUtil {
     }
     return File(imagePath);
   }
+
+Future<ui.Image> loadImage(String assetPath) async {
+  final ByteData img = await rootBundle.load(assetPath);
+  final Completer<ui.Image> completer = Completer();
+  ui.decodeImageFromList(Uint8List.view(img.buffer), (ui.Image img) {
+    return completer.complete(img);
+  });
+  return completer.future;
+}
 }

@@ -1,10 +1,14 @@
 PODS:
+  - air_brother (0.0.1):
+    - BRScanKit
+    - Flutter
   - another_brother (0.0.1):
     - BRLMPrinterKit
     - BROTHERSDK
     - Flutter
   - BRLMPrinterKit (4.0.2.1)
   - BROTHERSDK (0.1.0)
+  - BRScanKit (0.2.0)
   - DKImagePickerController/Core (4.3.2):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
@@ -57,6 +61,7 @@ PODS:
   - SwiftyGif (5.4.3)
 
 DEPENDENCIES:
+  - air_brother (from `.symlinks/plugins/air_brother/ios`)
   - another_brother (from `.symlinks/plugins/another_brother/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
@@ -68,6 +73,7 @@ SPEC REPOS:
   trunk:
     - BRLMPrinterKit
     - BROTHERSDK
+    - BRScanKit
     - DKImagePickerController
     - DKPhotoGallery
     - Protobuf
@@ -75,6 +81,8 @@ SPEC REPOS:
     - SwiftyGif
 
 EXTERNAL SOURCES:
+  air_brother:
+    :path: ".symlinks/plugins/air_brother/ios"
   another_brother:
     :path: ".symlinks/plugins/another_brother/ios"
   file_picker:
@@ -89,9 +97,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
 
 SPEC CHECKSUMS:
+  air_brother: f15597c3fa23769c53ae3dec84d29223691a5ce7
   another_brother: 14a7865809340ab48049fb9861f57bb5151c787c
   BRLMPrinterKit: 79ca593275bdae5309c8ee93674df2e5177a1b52
   BROTHERSDK: ea7f08981c315f742fc833d857dc85cb324ab195
+  BRScanKit: 44e043cf85a16327db93ff3952b1732ee99b13ff
   DKImagePickerController: b5eb7f7a388e4643264105d648d01f727110fc3d
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: 3e6c3790de664ccf9b882732d9db5eaf6b8d4eb1
