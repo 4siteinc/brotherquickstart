@@ -61,39 +61,22 @@ This project is a starting point for a Flutter application.
 ```  
 
 	<uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
-	
 	<uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
-	
 	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-	
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />	
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	
 	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"  android:maxSdkVersion="30" />
-	
 	<uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-	
 	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-	
 	<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-	
 	<uses-permission android:name="android.permission.BLUETOOTH"  android:maxSdkVersion="30" />
-	
 	<uses-permission android:name="android.permission.CAMERA" />
-	
 	<uses-permission android:name="android.permission.INTERNET" />
-	
 	<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-	
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
-	
 	<uses-permission android:name="android.permission.VIBRATE" />
-	
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
@@ -105,61 +88,33 @@ This project is a starting point for a Flutter application.
     <!-- Another Brother Section -->
 
         <key>NSLocalNetworkUsageDescription</key>
-
             <string>Looking for local tcp Bonjour service</string>
-
             <key>NSBonjourServices</key>
-
             <array>
-
                 <string>_ipp._tcp</string>
-
                 <string>_printer._tcp</string>
-
                 <string>_pdl-datastream._tcp</string>
-
                 <string>_dartobservatory._tcp</string>
-
             </array>
-
             <key>UIBackgroundModes</key>
-
             <array>
-
                 <string>fetch</string>
-
                 <string>remote-notifications</string>
-
             </array>
-
             <key>NSBluetoothAlwaysUsageDescription</key>
-
             <string>Need BLE permission</string>
-
             <key>NSBluetoothPeripheralUsageDescription</key>
-
             <string>Need BLE permission</string>
-
             <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-
             <string>Need Location permission</string>
-
             <key>NSLocationAlwaysUsageDescription</key>
-
             <string>Need Location permission</string>
-
             <key>NSLocationWhenInUseUsageDescription</key>
-
             <string>Need Location permission</string>
-
             <key>UISupportedExternalAccessoryProtocols</key>
-
             <array>
-
                 <string>com.brother.ptcbp</string>
-
                 <string>com.issc.datapath</string>
-
             </array>
 
     <!-- End Another Brother Section --> 
