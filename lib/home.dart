@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:another_brother/printer_info.dart';
 import 'package:brotherquickstart/brother/brother_bluetooth_printer.dart';
 import 'package:brotherquickstart/brother/brother_wifi_printer.dart';
 import 'package:brotherquickstart/util/navigation.dart';
@@ -22,7 +23,8 @@ class _HomeState extends State<Home> {
   List<File> files = List.empty(growable: true);
 
   bool isPrinting = false;
-
+  // PrinterStatus _printerStatus = PrinterStatus();
+  PrinterInfo _printInfo = PrinterInfo();
   @override
   void initState() {
     super.initState();
@@ -33,26 +35,100 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    if (isPrinting) {
+    if (files.isNotEmpty && isPrinting) {
       return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextButton.icon(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(color: Colors.blue),
+                    backgroundColor: Colors.black12,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                  ),
+                  onPressed: () => {printBrotherWifiPrinter()},
+                  icon: const Icon(
+                    Icons.wifi,
+                    color: Colors.white,
+                  ),
+                  label: const Text(
+                    'Print ',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  width: 11,
+                ),
+                TextButton.icon(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(color: Colors.blue),
+                    backgroundColor: Colors.black12,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                  ),
+                  onPressed: () => {printBrotherBluetoothPrinter()},
+                  icon: const Icon(
+                    Icons.bluetooth,
+                    color: Colors.white,
+                  ),
+                  label: const Text(
+                    'Print  ',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(
+                  width: 11,
+                ),
+              ],
+            ),
+          ],
         ),
         drawer: buildDrawer(),
         body: SafeArea(
           child: Center(
+            child: SingleChildScrollView(
+              physics: const ScrollPhysics(),
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const LinearProgressIndicator(),
-              const SizedBox(
-                height: 10,
+                children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const SizedBox(
+                    height: 11,
+                  ),
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: files.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      File file = files[index];
+                      return Card(
+                        clipBehavior: Clip.antiAlias,
+                        shadowColor: Colors.black,
+                        // elevation: 11,
+                        borderOnForeground: false,
+                        color: Colors.white70,
+                        child: Column(
+                          children: [
+                            Image.file(file),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-              Text("Calculating correct printing label", style: TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.6))),
-            ],
-          )),
+            ),
+          ),
         ),
+        bottomSheet: buildBottomSheet(),
         bottomNavigationBar: buildBottomNavigationBar(),
       );
     }
@@ -301,19 +377,17 @@ class _HomeState extends State<Home> {
       );
       return;
     }
-    setState(() {
-      isPrinting = true;
-    });
+
     // _file = await ImageUtil().rotate(_file!.path, 90);
     //here is the print statement
-    await BrotherWifiPrinter.print(files).onError((error, stackTrace) => {
+    setState(() {isPrinting = true;});
+
+    await BrotherWifiPrinter.print(files.toList(), eventListenerPrintStatus).onError((error, stackTrace) => {
     debugPrint("PrintImage: BrotherWifiPrinter: error: $error stackTrace: $stackTrace")
     }).catchError((onError) => {
       debugPrint("PrintImage: BrotherWifiPrinter: onError: $onError ")
     });
-    setState(() {
-      isPrinting = false;
-    });
+    setState(() {isPrinting = false;});
   }
 
   Future<void> printBrotherBluetoothPrinter() async {
@@ -340,12 +414,12 @@ class _HomeState extends State<Home> {
       );
       return;
     }
-    setState(() {
-      isPrinting = true;
-    });
+
     // _file = await ImageUtil().rotate(_file!.path, 90);
     //here is the print statement
-    await BrotherBluetoothPrinter.print(files).onError((error, stackTrace) {
+    setState(() {isPrinting = true;});
+
+    await BrotherBluetoothPrinter.print(files.toList(), eventListenerPrintStatus).onError((error, stackTrace) {
       debugPrint("PrintImage: printBrotherBluetoothPrinter: onError:  $error stackTrace: $stackTrace");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -358,9 +432,7 @@ class _HomeState extends State<Home> {
     }).catchError((catchError) {
       debugPrint("PrintImage: printBrotherBluetoothPrinter: catchError:  $catchError");
     });
-    setState(() {
-      isPrinting = false;
-    });
+    setState(() {isPrinting = false;});
   }
 
   Future<void> selectPictures() async {
@@ -406,26 +478,46 @@ class _HomeState extends State<Home> {
               TextButton.icon(label: const Text("Wifi Printers"), onPressed: () {Navigator.pop(context);Navigation().openBrotherWifiPrinter(context);}, icon: const Icon(Icons.wifi),),
               TextButton.icon(label: const Text("Bluetooth Printers"), onPressed: () {Navigator.pop(context);Navigation().openBrotherBluetoothPrinter(context);}, icon: const Icon(Icons.bluetooth),),
               TextButton.icon(label: const Text("Wifi Scanner"), onPressed: () {Navigator.pop(context);Navigation().openBrotherBrotherWifiScanner(context);}, icon: const Icon(Icons.scanner),),
-              // TextButton.icon(
-              //   label: const Text("Campaign"),
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //     openCampaignScreen();
-              //   },
-              //   icon: Image.asset('assets/votex24.png', color: Colors.blue),
-              // ),
-              // TextButton.icon(
-              //   label: const Text("Results"),
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //     openVotingResultsScreen();
-              //   },
-              //   icon: Image.asset('assets/view-galleryx24.png', color: Colors.blue),
-              // ),
+
             ],
           ),
         ],
       ),
     );
+  }
+
+  eventListenerPrintStatus(PrinterStatus printerStatus, PrinterInfo printInfo) async {
+    debugPrint("Home: eventListenerPrintStatus: printInfo: ${printInfo.labelNameIndex}");
+    debugPrint("Home: eventListenerPrintStatus: printInfo: ${printInfo.paperSize.getPaperId()}");
+    // _printerStatus = printerStatus;
+    if (printerStatus.errorCode.getName().compareTo(ErrorCode.ERROR_NONE.getName()) == 0) {
+      files.removeAt(0);
+    }
+
+
+      _printInfo = printInfo;
+    setState(() {
+    });
+  }
+
+  Widget buildBottomSheet() {
+    debugPrint("Home: buildBottomSheet");
+    double width = (MediaQuery.of(context).size.width);
+    return Container(
+      color: Colors.blue,
+      height: 120,
+      width:width,
+        padding:  const EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(":: Checking for the correct label size::",               style: TextStyle(fontSize: 17, color: Colors.black.withOpacity(0.6))),
+          Text("Checking paper Size ${_printInfo.labelNameIndex}",       style: TextStyle(fontSize: 17, color: Colors.black.withOpacity(0.6))),
+          Text("Checking paper id ${_printInfo.paperSize.getPaperId()}", style: TextStyle(fontSize: 17, color: Colors.black.withOpacity(0.6))),
+        ],
+      )
+    );
+
   }
 }

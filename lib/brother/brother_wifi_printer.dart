@@ -16,8 +16,10 @@ class BrotherWifiPrinter extends StatefulWidget {
 
   static NetPrinter? netPrinter;
   static final PrinterInfo _printInfo = PrinterInfo();
+  static final List<int> _values = List.empty(growable: true);
 
-  static Future<void> print(List<File> files) async {
+  static Future<void> print(final List<File> files, Function(PrinterStatus printerStatus, PrinterInfo printInfo) eventListenerPrintStatus) async {
+
     debugPrint("BrotherWifiPrinter: static void print ${files.length}");
 
     if (netPrinter != null) {
@@ -50,76 +52,80 @@ class BrotherWifiPrinter extends StatefulWidget {
       _printInfo.isCutAtEnd = true;
       _printInfo.isHalfCut = false;
       _printInfo.isSpecialTape = false;
-      int x = 0;
-      PrinterStatus p = PrinterStatus();
+      PrinterStatus printerStatus = PrinterStatus();
       //first time to print with device.
       //forces error so it can go to "figure it out" logic below
 
       for (var file in files) {
-        if (_printInfo.labelNameIndex == -1) {
-          _printer.setPrinterInfo(_printInfo);
-          p = await _printer.printFile(file.path);
 
-          debugPrint("BrotherWifiPrinter: print: file:1: ${file.path} ");
-          debugPrint("BrotherWifiPrinter: print: file:2: ${ file.statSync().type} ");
-          debugPrint("BrotherWifiPrinter: print: file:3: ${ file.statSync().accessed} ");
-          debugPrint("BrotherWifiPrinter: print: file:4: ${ file.statSync().changed} ");
-          debugPrint("BrotherWifiPrinter: print: file:5: ${ file.statSync().mode} ");
-          debugPrint("BrotherWifiPrinter: print: file:6: ${ file.statSync().modified} ");
-          debugPrint("BrotherWifiPrinter: print: file:7: ${ file.statSync().size} ");
+        try{
+          //reuse the previous known good printer and label
+          printerStatus = await _printer.printFile(file.path);
+          if (printerStatus.errorCode.getName().compareTo(ErrorCode.ERROR_NONE.getName()) == 0) {
+            eventListenerPrintStatus(printerStatus, _printInfo);
+            continue;
+          }
+          eventListenerPrintStatus(printerStatus, _printInfo);
+          throw Exception(printerStatus.errorCode.getName());
+        }
+        catch(e){
+          //forces error so it can go to "figure it out" logic below
+          await loadLabelNameIndexes(_printInfo.printerModel);
+          _printInfo.isAutoCut = true;
+          _printInfo.numberOfCopies = 1;
 
-          if (p.errorCode.getName().compareTo("ERROR_WRONG_LABEL") == 0) {
-            // go to "figure it out" logic below
-            debugPrint("BrotherWifiPrinter: print: first time: go to 'figure it out' logic below: ${_printInfo.labelNameIndex} ");
-          } else if (p.errorCode.getName().compareTo("ERROR_NONE") != 0) {
-            debugPrint("BrotherWifiPrinter: print: first time: reuse: ${_printInfo.labelNameIndex} ${p.errorCode.getName()}");
-            throw Exception(p.errorCode.getName());
+          for (int value in _values) {
+            debugPrint("BrotherBluetoothPrinter: print: trying value.getPaperId: $value ");
+            _printInfo.labelNameIndex = value;
+            // _printInfo.paperSize = value;
+            _printer.setPrinterInfo(_printInfo);
+            printerStatus = await _printer.printFile(file.path);
+            eventListenerPrintStatus(printerStatus, _printInfo);
+            if (printerStatus.errorCode.getName().compareTo("ERROR_NONE") == 0) {
+              //this info is cached and will remember until the app is closed so....
+              //persist this so the next time you launch the app it, will remember the settings
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              //found the correct label
+              break;
+            } else if (printerStatus.errorCode.getName().compareTo("ERROR_WRONG_LABEL") == 0) {
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus try again: ${_printInfo.labelNameIndex} ${printerStatus.errorCode.getName()}");
+              //keep trying
+            } else {
+              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus ERROR: ${_printInfo.labelNameIndex} ${printerStatus.errorCode.getName()}");
+              throw Exception(printerStatus.errorCode.getName());
+            }
           }
         }
-        // reuse the last good print settings
-        if (p.errorCode.getName().compareTo("ERROR_NONE") == 0 && _printInfo.labelNameIndex != -1) {
-          debugPrint("BrotherWifiPrinter: print: Life is good: reuse: ${_printInfo.labelNameIndex} ${p.errorCode.getName()}");
-          _printer.setPrinterInfo(_printInfo);
-          p = await _printer.printFile(file.path);
-          if (p.errorCode.getName().compareTo("ERROR_NONE") != 0) {
-            debugPrint("BrotherWifiPrinter: print: Life is good: ERROR: ${_printInfo.labelNameIndex} ${p.errorCode.getName()}");
-            throw Exception(p.errorCode.getName());
-          }
-        }
 
-        //figure it out" logic
-        while (p.errorCode.getName().compareTo("ERROR_NONE") != 0 && x < 100) {
-          x++;
-          _printInfo.labelNameIndex = x;
-          _printer.setPrinterInfo(_printInfo);
-          p = await _printer.printFile(file.path);
-
-          if (p.errorCode.getName().compareTo("ERROR_NONE") == 0) {
-            //found the correct label
-            //this info is cached and will remember until the app is closed so....
-            //persist this so the next time you launch the app it, will remember the settings
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-            break;
-          } else if (p.errorCode.getName().compareTo("ERROR_WRONG_LABEL") == 0) {
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus try again: ${_printInfo.labelNameIndex} ${p.errorCode.getName()}");
-          } else {
-            debugPrint("BrotherWifiPrinter: print: PrinterStatus ERROR: ${_printInfo.labelNameIndex} ${p.errorCode.getName()}");
-            throw Exception(p.errorCode.getName());
-          }
-        }
       }
-
       return;
     }
     debugPrint("BrotherWifiPrinter: static void print ERROR");
   }
+
+
+  static Future<void>  loadLabelNameIndexes(Model printerModel) async {
+    for (int x=0;x<100;x++) {
+      try{
+        if(printerModel.getLabelID(x) != 255){
+          debugPrint("BrotherWifiPrinter: loadLabelNameIndexes: printerModel.getLabelID: ${printerModel.getLabelID(x)} ");
+          _values.add(printerModel.getLabelID(x));
+        }
+      }
+      catch(e){
+        //this is OK
+      }
+    }
+  }
+
 }
+
 
 class _BrotherWifiPrinterState extends State<BrotherWifiPrinter> {
   List<NetPrinter> _netPrinterList = List.empty(growable: true);
@@ -135,14 +141,6 @@ class _BrotherWifiPrinterState extends State<BrotherWifiPrinter> {
     });
   }
 
-  // Future<ui.Image> loadImage(String assetPath) async {
-  //   final ByteData img = await rootBundle.load(assetPath);
-  //   final Completer<ui.Image> completer = Completer();
-  //   ui.decodeImageFromList(Uint8List.view(img.buffer), (ui.Image img) {
-  //     return completer.complete(img);
-  //   });
-  //   return completer.future;
-  // }
 
   @override
   Widget build(BuildContext context) {

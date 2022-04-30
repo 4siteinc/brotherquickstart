@@ -50,6 +50,8 @@ PODS:
   - flutter_blue/Protos (0.0.1):
     - Flutter
     - Protobuf (~> 3.11.4)
+  - gallery_saver (0.0.1):
+    - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
   - permission_handler_apple (9.0.4):
@@ -66,6 +68,7 @@ DEPENDENCIES:
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
   - flutter_blue (from `.symlinks/plugins/flutter_blue/ios`)
+  - gallery_saver (from `.symlinks/plugins/gallery_saver/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
 
@@ -91,6 +94,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_blue:
     :path: ".symlinks/plugins/flutter_blue/ios"
+  gallery_saver:
+    :path: ".symlinks/plugins/gallery_saver/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   permission_handler_apple:
@@ -107,6 +112,7 @@ SPEC CHECKSUMS:
   file_picker: 3e6c3790de664ccf9b882732d9db5eaf6b8d4eb1
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_blue: eeb381dc4727a0954dede73515f683865494b370
+  gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7

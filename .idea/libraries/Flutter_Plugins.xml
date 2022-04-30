@@ -1,6 +1,19 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
-    <CLASSES />
+    <CLASSES>
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/file_picker-4.5.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.13" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/flutter_blue-0.8.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/permission_handler-9.2.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.9" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.8" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.5" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/gallery_saver-2.3.2" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>

@@ -1,4 +1,6 @@
 import 'package:brotherquickstart/app_permissions_page.dart';
+// ignore: unused_import
+import 'package:brotherquickstart/brother/brother_bluetooth_ble_printer.dart';
 import 'package:brotherquickstart/brother/brother_bluetooth_printer.dart';
 import 'package:brotherquickstart/brother/brother_wifi_printer.dart';
 import 'package:brotherquickstart/brother/brother_wifi_scanner.dart';
@@ -16,7 +18,6 @@ class Navigation {
     );
   }
 
-  //TODO
   // void openBrotherBluetoothBlePrinter(BuildContext context) {
   //   Navigator.push(
   //     context,
