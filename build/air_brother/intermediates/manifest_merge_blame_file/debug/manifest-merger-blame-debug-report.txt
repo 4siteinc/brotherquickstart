@@ -1,0 +1,39 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.rouninlabs.air_brother" >
+4
+5    <uses-sdk android:minSdkVersion="16" />
+5-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml
+6
+7    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+7-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:4:5-81
+7-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:4:22-78
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:5:5-67
+8-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:5:22-64
+9    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+9-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:6:5-76
+9-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:6:22-73
+10    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+10-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:7:5-76
+10-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:7:22-73
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:8:5-79
+11-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:8:22-76
+12    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+12-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:9:5-79
+12-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:9:22-76
+13
+14    <uses-feature android:name="android.hardware.usb.host" />
+14-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:10:5-62
+14-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:10:19-59
+15
+16    <application>
+16-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:12:5-15:19
+17        <receiver android:name="com.rouninlabs.air_brother.receiver.AirBrotherUsbPermissionsReceiver" >
+17-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:13:9-14:20
+17-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/air_brother-0.1.1/android/src/main/AndroidManifest.xml:13:19-76
+18        </receiver>
+19    </application>
+20
+21</manifest>

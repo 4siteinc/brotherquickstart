@@ -15,7 +15,7 @@ class BrotherBluetoothPrinter extends StatefulWidget {
 
   static BluetoothPrinter? bluetoothPrinter;
   static final PrinterInfo _printInfo = PrinterInfo();
-  static final List<int> _values = List.empty(growable: true);
+  static  List<int> _labelValues = List.empty(growable: true);
 
   static Future<void> print(final List<File> files, Function(PrinterStatus printerStatus, PrinterInfo printInfo) eventListenerPrintStatus) async {
     debugPrint("BrotherWifiPrinter: static void print ${files.length}");
@@ -58,7 +58,7 @@ class BrotherBluetoothPrinter extends StatefulWidget {
           _printInfo.isAutoCut = true;
           _printInfo.numberOfCopies = 1;
 
-          for (int value in _values) {
+          for (int value in _labelValues) {
             debugPrint("BrotherBluetoothPrinter: print: trying value.getPaperId: $value ");
             _printInfo.labelNameIndex = value;
             // _printInfo.paperSize = value;
@@ -87,16 +87,23 @@ class BrotherBluetoothPrinter extends StatefulWidget {
           }
         }
       }
+      debugPrint("BrotherBluetoothPrinter: print: PrinterStatus __printInfo: DONE");
+      return;
     }
-    debugPrint("BrotherBluetoothPrinter: print: PrinterStatus __printInfo: DONE");
+    debugPrint("BrotherBluetoothPrinter: static void print ERROR");
   }
 
   static Future<void>  loadLabelNameIndexes(Model printerModel) async {
+    _labelValues = List.empty(growable: true);
+
+    int x2 = 0;
     for (int x=0;x<100;x++) {
       try{
         if(printerModel.getLabelID(x) != 255){
           debugPrint("BrotherBluetoothPrinter: loadLabelNameIndexes: printerModel.getLabelID: ${printerModel.getLabelID(x)} ");
-          _values.add(printerModel.getLabelID(x));
+          // _labelValues.add(printerModel.getLabelID(x));
+          // this needs to be ordinalFromID not getLabelID
+          _labelValues.add(x2++);
         }
       }
       catch(e){

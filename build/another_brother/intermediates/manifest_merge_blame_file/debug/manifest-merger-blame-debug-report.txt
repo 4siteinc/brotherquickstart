@@ -1,0 +1,32 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.rouninlabs.another_brother" >
+4
+5    <uses-sdk android:minSdkVersion="19" />
+5-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+6
+7    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+7-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:4:5-81
+7-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:4:22-78
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:5:5-67
+8-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:5:22-64
+9    <uses-permission android:name="android.permission.BLUETOOTH" />
+9-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:6:5-68
+9-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:6:22-65
+10    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+10-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:7:5-74
+10-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:7:22-71
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:8:5-79
+11-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:8:22-76
+12
+13    <application>
+13-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:10:5-15:19
+14        <receiver android:name="com.rouninlabs.another_brother.receiver.UsbPermissionsReceiver" >
+14-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:12:9-13:20
+14-->/Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:12:19-66
+15        </receiver>
+16    </application>
+17
+18</manifest>

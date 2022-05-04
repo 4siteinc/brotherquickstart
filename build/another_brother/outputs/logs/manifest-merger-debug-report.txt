@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:1:1-16:12
+INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:1:1-16:12
+INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:1:1-16:12
+	package
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:2:3-43
+		INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:4:5-81
+	android:name
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:4:22-78
+uses-permission#android.permission.INTERNET
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:6:5-68
+	android:name
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:6:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:7:5-74
+	android:name
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:7:22-71
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:8:22-76
+application
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:10:5-15:19
+receiver#com.rouninlabs.another_brother.receiver.UsbPermissionsReceiver
+ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:12:9-13:20
+	android:name
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml:12:19-66
+uses-sdk
+INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+		ADDED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml
+		INJECTED from /Users/jwyatt/.pub-cache/hosted/pub.dartlang.org/another_brother-0.0.25/android/src/main/AndroidManifest.xml

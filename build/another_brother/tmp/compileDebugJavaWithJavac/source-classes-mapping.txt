@@ -1,0 +1,42 @@
+com/rouninlabs/another_brother/BuildConfig.java
+ com.rouninlabs.another_brother.BuildConfig
+com/rouninlabs/another_brother/method/typeb/internal/BrotherUSBActivity.java
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$1
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$10
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$11
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$12
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$13
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$14
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$15
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$16
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$17
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$18
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$19
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$2
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$20
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$21
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$22
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$23
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$24
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$25
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$26
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$27
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$28
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$29
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$3
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$30
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$4
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$5
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$6
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$7
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$8
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherUSBActivity$9
+com/rouninlabs/another_brother/method/typeb/internal/BrotherActivity.java
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherActivity
+com/rouninlabs/another_brother/method/typeb/internal/BrotherWifiActivity.java
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherWifiActivity
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherWifiActivity$1
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherWifiActivity$2
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherWifiActivity$3
+ com.rouninlabs.another_brother.method.typeb.internal.BrotherWifiActivity$4

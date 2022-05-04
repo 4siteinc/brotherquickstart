@@ -22,6 +22,7 @@ dependencies:
   image: ^3.1.3
   air_brother: ^0.1.0
   gallery_saver: ^2.3.2
+  flutter_native_splash: ^2.1.6
 
 dev_dependencies:
   flutter_test:
@@ -36,3 +37,18 @@ flutter:
 
   assets:
     - assets/
+
+  # run this three commands after changing  flutter_native_splash settings
+  # flutter clean;
+  #  flutter pub get;
+  #  flutter pub run flutter_native_splash:create
+
+flutter_native_splash:
+  color: "#ffffff"
+  #  branding: assets/logo.png
+  #  branding_mode: bottom
+  image: assets/logo.png
+  android_gravity: center
+  ios_content_mode: center
+  web_image_mode: center
+

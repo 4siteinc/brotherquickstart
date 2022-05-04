@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:another_brother/label_info.dart';
 import 'package:another_brother/printer_info.dart';
 import 'package:brotherquickstart/util/navigation.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class BrotherWifiPrinter extends StatefulWidget {
 
   static NetPrinter? netPrinter;
   static final PrinterInfo _printInfo = PrinterInfo();
-  static final List<int> _values = List.empty(growable: true);
+  static  List<int> _labelValues = List.empty(growable: true);
 
   static Future<void> print(final List<File> files, Function(PrinterStatus printerStatus, PrinterInfo printInfo) eventListenerPrintStatus) async {
 
@@ -31,6 +32,8 @@ class BrotherWifiPrinter extends StatefulWidget {
       }
       List<Model> models = Model.getValues();
       for (var model in models) {
+        debugPrint("BrotherWifiPrinter: static void print: lookFor: ${lookFor}:model.name ${model.getName()}");
+
         if (lookFor.contains(model.getName())) {
           debugPrint("BrotherWifiPrinter: FOUND IT: static void print ${model.getName()}");
           await _printer.setPrinterInfo(_printInfo);
@@ -42,19 +45,44 @@ class BrotherWifiPrinter extends StatefulWidget {
       Directory tempDir = await getTemporaryDirectory();
       String tempPath = tempDir.path;
       _printInfo.workPath = tempPath;
-      _printInfo.printMode = PrintMode.FIT_TO_PAGE;
       _printInfo.isAutoCut = true;
       _printInfo.port = Port.NET;
+
+      // _printInfo.paperSize = PaperSize.A5;
+      // _printInfo.paperSize = PaperSize.A5_LANDSCAPE;
+      // _printInfo.paperSize = PaperSize.A6;
+      // _printInfo.paperSize = PaperSize.A7;
       _printInfo.paperSize = PaperSize.CUSTOM;
+      // _printInfo.paperSize = PaperSize.LEGAL;
+      // _printInfo.paperSize = PaperSize.LETTER;
       _printInfo.ipAddress = netPrinter!.ipAddress;
+      _printInfo.printMode = PrintMode.FIT_TO_PAGE;
       _printInfo.numberOfCopies = 1;
-      _printInfo.isAutoCut = true;
       _printInfo.isCutAtEnd = true;
       _printInfo.isHalfCut = false;
-      _printInfo.isSpecialTape = false;
+      //xxxx
+      // LabelInfo info = await printer.getLabelInfo();
+      //print ("Label Info $info");
+//hmmmmmm
+      // _printInfo.labelNameIndex = _printInfo.labelNameIndex;
+      // QL1100.ordinalFromID(QL1100.W103.getId());
+      // _printInfo.labelNameIndex = QL1100.ordinalFromID(QL1100.W103.getId());
+      // debugPrint("BrotherWifiPrinter: print: _printInfo.labelNameIndex: ${_printInfo.labelNameIndex} ");
+
+      // xxx
+      // _printInfo.timeout = TimeoutSetting(
+      //     processTimeoutSec : -1,
+      //     sendTimeoutSec : 90,
+      //     receiveTimeoutSec : 180,
+      //     closeWaitMSec : 5000,
+      //     connectionWaitMSec : 5000,
+      //     closeWaitDisusingStatusCheckSec : 5);
+      // _printInfo.isSpecialTape = false;
       PrinterStatus printerStatus = PrinterStatus();
       //first time to print with device.
       //forces error so it can go to "figure it out" logic below
+      //remove this
+      // await loadLabelNameIndexes(_printInfo.printerModel);
 
       for (var file in files) {
 
@@ -71,39 +99,41 @@ class BrotherWifiPrinter extends StatefulWidget {
         catch(e){
           //forces error so it can go to "figure it out" logic below
           await loadLabelNameIndexes(_printInfo.printerModel);
-          _printInfo.isAutoCut = true;
-          _printInfo.numberOfCopies = 1;
-
-          for (int value in _values) {
-            debugPrint("BrotherBluetoothPrinter: print: trying value.getPaperId: $value ");
+          for (int value in _labelValues) {
+            debugPrint("BrotherWifiPrinter: print: trying value.getPaperId: $value ");
             _printInfo.labelNameIndex = value;
-            // _printInfo.paperSize = value;
+            // _printInfo.labelNameIndex = QL1100.ordinalFromID(QL1100.W103.getId());
+            debugPrint("BrotherWifiPrinter: print: trying _printInfo.labelNameIndex: ${_printInfo.labelNameIndex} ");
+
+            // _printInfo.paperSize = PaperSize.CUSTOM;
+            // _printInfo.
+            // _printInfo.paperSize = PaperSize.;
             _printer.setPrinterInfo(_printInfo);
             printerStatus = await _printer.printFile(file.path);
             eventListenerPrintStatus(printerStatus, _printInfo);
             if (printerStatus.errorCode.getName().compareTo("ERROR_NONE") == 0) {
               //this info is cached and will remember until the app is closed so....
               //persist this so the next time you launch the app it, will remember the settings
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus found the correct label: ${_printInfo.labelNameIndex} ");
               //found the correct label
               break;
             } else if (printerStatus.errorCode.getName().compareTo("ERROR_WRONG_LABEL") == 0) {
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus try again: ${_printInfo.labelNameIndex} ${printerStatus.errorCode.getName()}");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus try again: ${_printInfo.labelNameIndex} ${printerStatus.errorCode.getName()}");
               //keep trying
             } else {
-              debugPrint("BrotherBluetoothPrinter: print: PrinterStatus ERROR: ${_printInfo.labelNameIndex} ${printerStatus.errorCode.getName()}");
+              debugPrint("BrotherWifiPrinter: print: PrinterStatus ERROR: ${_printInfo.labelNameIndex} ${printerStatus.errorCode.getName()}");
               throw Exception(printerStatus.errorCode.getName());
             }
           }
         }
-
       }
+      debugPrint("BrotherWifiPrinter: print: PrinterStatus __printInfo: DONE");
       return;
     }
     debugPrint("BrotherWifiPrinter: static void print ERROR");
@@ -111,11 +141,18 @@ class BrotherWifiPrinter extends StatefulWidget {
 
 
   static Future<void>  loadLabelNameIndexes(Model printerModel) async {
+    debugPrint("BrotherWifiPrinter: loadLabelNameIndexes: printerModel.getLabelID: ${printerModel.getName()} ");
+    _labelValues = List.empty(growable: true);
+    int x2 = 0;
     for (int x=0;x<100;x++) {
       try{
+        // if printerModel == QL-1110NWB
+        // printerModel.getLabelID(20) return 255 aka UNSUPPORTED
         if(printerModel.getLabelID(x) != 255){
           debugPrint("BrotherWifiPrinter: loadLabelNameIndexes: printerModel.getLabelID: ${printerModel.getLabelID(x)} ");
-          _values.add(printerModel.getLabelID(x));
+          // _labelValues.add(printerModel.getLabelID(x));
+          // this needs to be ordinalFromID not getLabelID
+          _labelValues.add(x2++);
         }
       }
       catch(e){
@@ -331,9 +368,9 @@ class _BrotherWifiPrinterState extends State<BrotherWifiPrinter> {
     debugPrint("BrotherWifiPrinter: loadPage: _netPrinterList.length: ${_netPrinterList.length}");
   }
 
-  void selectPrinter(NetPrinter oNetPrinter) {
-    debugPrint("BrotherWifiPrinter: selectPrinter: NetPrinter: $oNetPrinter");
-    BrotherWifiPrinter.netPrinter = oNetPrinter;
+  void selectPrinter(NetPrinter netPrinter) {
+    debugPrint("BrotherWifiPrinter: selectPrinter: NetPrinter: ${netPrinter.modelName}");
+    BrotherWifiPrinter.netPrinter = netPrinter;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
           content: Text(
@@ -394,22 +431,7 @@ class _BrotherWifiPrinterState extends State<BrotherWifiPrinter> {
               TextButton.icon(label: const Text("Wifi Printers"), onPressed: () {Navigator.pop(context);Navigation().openBrotherWifiPrinter(context);}, icon: const Icon(Icons.wifi),),
               TextButton.icon(label: const Text("Bluetooth Printers"), onPressed: () {Navigator.pop(context);Navigation().openBrotherBluetoothPrinter(context);}, icon: const Icon(Icons.bluetooth),),
               TextButton.icon(label: const Text("Wifi Scanner"), onPressed: () {Navigator.pop(context);Navigation().openBrotherBrotherWifiScanner(context);}, icon: const Icon(Icons.scanner),),
-              // TextButton.icon(
-              //   label: const Text("Campaign"),
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //     openCampaignScreen();
-              //   },
-              //   icon: Image.asset('assets/votex24.png', color: Colors.blue),
-              // ),
-              // TextButton.icon(
-              //   label: const Text("Results"),
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //     openVotingResultsScreen();
-              //   },
-              //   icon: Image.asset('assets/view-galleryx24.png', color: Colors.blue),
-              // ),
+
             ],
           ),
         ],

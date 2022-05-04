@@ -49,6 +49,12 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/air_brother/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/air_brother/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/air_brother/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/gallery_saver/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/gallery_saver/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/gallery_saver/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/gallery_saver/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/gallery_saver/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/gallery_saver/example/build" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 32 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
