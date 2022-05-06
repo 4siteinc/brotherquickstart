@@ -156,7 +156,7 @@ currently we are not branching to code and supply all changes in the main branch
 
 ## compile and run
 ### Android: do what you normally do.
-### IOS: watch ios 'how to compile and run' video
+### IOS: [watch ios 'how to compile and run' video](https://www.youtube.com/watch?v=4zQGC4YvxAM)
 
 ## history
 | date | comment |
