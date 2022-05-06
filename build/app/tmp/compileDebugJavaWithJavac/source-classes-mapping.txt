@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/foursiteinc/brotherquickstart/BuildConfig.java
- com.foursiteinc.brotherquickstart.BuildConfig

@@ -1,2 +1,0 @@
-com/rouninlabs/air_brother/BuildConfig.java
- com.rouninlabs.air_brother.BuildConfig
