@@ -21,14 +21,12 @@ to scan using a wifi brother mobile scanner
 This project is a starting point for a Flutter application.
 - [another_brother: ^0.0.25](https://pub.dev/packages/another_brother)
 - [air_brother: ^0.1.0](https://pub.dev/packages/air_brother)
--  cupertino_icons: ^1.0.2
--  file_picker: ^4.5.1
--  path_provider: ^2.0.9
--  permission_handler: ^9.2.0
--  image: ^3.1.3
--  gallery_saver: ^2.3.2
--  google_fonts: ^2.3.2
--  flutter_native_splash: ^2.1.6
+- cupertino_icons: ^1.0.2
+- another_brother: ^0.0.25
+- file_picker: ^4.5.1
+- path_provider: ^2.0.9
+- permission_handler: ^9.2.0
+- image: ^3.1.3
 
 
 ## key files
